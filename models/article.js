@@ -20,14 +20,14 @@ var articleSchema = mongoose.Schema({
         required: true
     },
     date: {
-        type: date,
+        type: Date,
         default: Date.now
     }
 });
 
 var Article = module.exports = mongoose.model('Article', articleSchema);
 
-//Since we have module.exports we can the below outside the file.
+//Since we have module.exports we can use the below outside the file.
 
 //Get All Articles
 module.exports.getArticles = function (callback) {

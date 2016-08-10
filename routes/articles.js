@@ -14,4 +14,27 @@ router.get('/', function(req, res, next) {
   });
 });
 
+router.get('/:id', function(req, res, next) {
+  //getArticleById(id, callback)
+  Article.getArticleById(req.params.id, function (err, article) {
+    if (err) {
+      console.log(err);
+    }
+    //articles from mongodb
+    res.json(article);
+  });
+});
+
+router.get('/category/:category', function (req, res, next) {
+  //getArticleByCategory (category, callback)
+  Article.getArticleByCategory(req.params.category, function (err, articles) {
+    if(err) {
+      console.log(err);
+    }
+    //articles from mongodb
+    res.json(articles);
+    //res.json(callback);
+  });
+})
+
 module.exports = router;
