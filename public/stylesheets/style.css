@@ -1,16 +1,7 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-}
-
-a {
-  color: #00B7FF;
-}
-
 footer {
   background: #333;
   color:#fff;
-  height:30px;
-  padding: 10px 0;
+  height:40px;
+  padding: 10px;
   text-align: center;
 }
