@@ -1,1 +1,39 @@
-CATEGORIES VIEW.
+<h3 class="heading">
+    Categories
+</h3>
+
+<div ng-controller="CategoriesCtrl">
+    <div class="row">
+        <div ng-repeat="category in categories">
+            <div class="col-md-6">
+                <h3>{{category.name}}</h3>
+                <p>{{category.description}}</p>
+                <a href="#/articles/category/{{category.name}}">View Articles</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<h3 class="heading">Articles</h3>
+
+<div ng-controller="ArticlesCtrl">
+    <div class="row">
+        <div class="articles">
+            <div ng-repeat="article in articles">
+                <div class="col-md-12">
+                    <div class="article">
+                        <h4>{{article.title}}</h4>
+                        <p>{{article.body}}</p>
+                        <p>{{article.category}}</p>
+                        <p>{{article.date}}</p>
+                        <a class="btn btn-default" href="#/articles/details/{{articles._id}}">Read Article</a>
+                    </div>
+                </div>
+            </div>
+            <div ng-if="articles == false">
+                No Articles
+            </div>
+        </div>
+
+    </div>
+</div>

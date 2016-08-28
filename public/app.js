@@ -18,7 +18,7 @@ app.config(['$routeProvider', function ($routeProvider) {
     }).when('/articles/category/:category/', {
             templateUrl: 'views/cat_articles.view.html',
             controller: 'ArticlesCategoryCtrl'
-    }).when('/categories', {
+    }).when('/categories/edit/:id', {
             templateUrl: 'views/edit_article.view.html',
             controller: 'CategoriesCtrl'
     }).when('/articles/add', {
