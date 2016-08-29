@@ -1,0 +1,24 @@
+<h3 class="heading">Articles</h3>
+
+<div ng-controller="ArticlesCtrl">
+    <a href="#/categories">Go Back</a>
+    <div class="row">
+        <div class="articles">
+            <div ng-repeat="article in articles">
+                <div class="col-md-12">
+                    <div class="article">
+                        <h4>{{article.title}}</h4>
+                        <p>{{article.body | limitTo:200}}</p>
+                        <p>{{article.category}}</p>
+                        <p>{{article.date}}</p>
+                        <a class="btn btn-default" href="#/articles/details/{{article._id}}">Read Article</a>
+                    </div>
+                </div>
+            </div>
+            <div ng-if="articles == false">
+                No Articles
+            </div>
+        </div>
+
+    </div>
+</div>
