@@ -17,18 +17,24 @@ angular.module('kB')
         //config(optional) -> Objects: Optional configuration object
         $http.get('/articles').success(function (data) {
             $scope.articles = data;
-        })
+        });
     }])
     .controller('ArticlesCategoryCtrl', ['$scope', '$http','$routeParams', function ($scope, $http, $routeParams) {
         $http.get('/articles/category/'+$routeParams.category).success(function (data) {
             $scope.cat_articles = data;
             $scope.category = $routeParams.category;
-        })
+        });
     }])
-    .controller('ArticleDetailsCtrl', ['$scope', '$http', '$routeParams',function ($scope, $http, $routeParams) {
+    .controller('ArticleDetailsCtrl', ['$scope', '$http', '$routeParams','$location',function ($scope, $http, $routeParams, $location) {
         $http.get('/articles/'+$routeParams.id).success(function (data) {
             $scope.article = data;
         })
+        $scope.removeArticle = function () {
+            $http.delete('/articles/'+$routeParams.id).success(function (data) {
+                console.log(data);
+            });
+            $location.path('/articles');
+        }
     }])
     .controller('ArticlesCreateCtrl', ['$scope', '$http', '$routeParams','$location', function ($scope, $http, $routeParams, $location) {
         $http.get('/categories').success(function (data) {
@@ -41,6 +47,27 @@ angular.module('kB')
                 category: $scope.category
             }
             $http.post('/articles', data).success(function (data, status) {
+                console.log(status);
+            });
+
+            $location.path('/articles');
+        }
+    }])
+    .controller('ArticlesEditCtrl', ['$scope', '$http', '$routeParams','$location', function ($scope, $http, $routeParams, $location) {
+        $http.get('/categories').success(function (data) {
+            $scope.categories = data;
+        })
+        $http.get('/articles/'+$routeParams.id).success(function (data) {
+            $scope.article = data;
+        })
+        $scope.updateArticle = function () {
+            var data = {
+                id: $routeParams.id,
+                title: $scope.article.title,
+                body: $scope.article.body,
+                category: $scope.article.category
+            }
+            $http.put('/articles', data).success(function (data, status) {
                 console.log(status);
             });
 
